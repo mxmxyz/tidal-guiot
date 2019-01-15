@@ -1,0 +1,23 @@
+name:                tidal-guiot
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/mxmxyz/tidal-guiot/README.md
+license:             BSD3
+license-file:        LICENSE
+author:              Guiot
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Sound.Tidal.Guiot.Control
+  build-depends:       base >= 4.7 && < 5, tidal
+  default-language:    Haskell2010
+  default-extensions: OverloadedStrings
+
+source-repository head
+  type:     git
+  location: https://github.com/mxmxyz/tidal-guiot
