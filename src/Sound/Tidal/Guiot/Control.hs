@@ -5,7 +5,7 @@ import Sound.Tidal.Scales
 import Sound.Tidal.Chords
 
 -- parameters for SuperDirt synths
-upbound, lobound, shaped, lopf, lopq, ringfreq, ringmod, ringenv :: Pattern Double -> ControlPattern
+upbound, lobound, shaped, lopf, lopq, ringfreq, ringmod, ringenv, tuning :: Pattern Double -> ControlPattern
 ringfreq = pF "ringfreq"
 ringmod = pF "ringmod"
 ringenv = pF "ringenv"
@@ -14,3 +14,4 @@ lopq = pF "lopq"
 shaped = pF "shaped"
 upbound = pF "upbound"
 lobound = pF "lobound"
+tuning = pF "tuning"
