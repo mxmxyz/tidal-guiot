@@ -1,3 +1,5 @@
+#tidal-guiot
+
 TidalCycles control parameters, functions, etc.
 
 ##Contents
