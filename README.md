@@ -6,7 +6,7 @@ TidalCycles control parameters, functions, etc.
 
 *Functions.hs*: Functions that I use every once in a while, useful for patterning things around (a bit barren for now).
 
-*Control.hs*: Defining parameters that I need to control my SC synths (repo for that in a while).
+*Control.hs*: Defining parameters that I need to control [my SC synths](https://github.com/mxmxyz/synthdefs).
 
 ## Installation
 
