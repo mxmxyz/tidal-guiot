@@ -17,4 +17,4 @@ g = degradeBy 1
 shrand n = (fast (1.453^n) $ rand)
 
 --speedUp, apply 'fast' only to a series of functions (eg whenmod, spaceOut)
-speedUp n functs p = fast n $ functs $ slow n $ p
+speedUp n functs = fast n . functs . slow n 
