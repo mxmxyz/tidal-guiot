@@ -20,6 +20,7 @@ pitchval = pF "pitchval"
 bandpf = pF "bandpf"
 bandpq = pF "bandpq"
 timescale = pF "timescale"
+envcurve = pF "envcurve"
 
 -- for "\balloon" SynthDef
 notea, noteb, notec, noted, envab, envbc, envcd, bandpfa, bandpfb, bandpfc, bandpqa, bandpqb, bandpqc :: Pattern Double -> ControlPattern
