@@ -15,3 +15,6 @@ g = degradeBy 1
 
 --shrand, to allow for non-syncing randomness
 shrand n = (fast (1.453^n) $ rand)
+
+--scaleshift, to use a scale and +/- by n degrees 
+shiftscale scale n p = scale ((+ n) <$> p)
