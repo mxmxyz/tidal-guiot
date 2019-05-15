@@ -22,5 +22,8 @@ Then, in tidal (after restarting it in case it was already running), evaluate
 
 ```
 import Sound.Tidal.Guiot.Control
+
 import Sound.Tidal.Guiot.Functions
+
+import Sound.Tidal.Guiot.Scales
 ```
