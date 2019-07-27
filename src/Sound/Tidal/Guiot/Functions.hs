@@ -36,3 +36,6 @@ mute = degBy 1
 --transup and transdown
 transup n p = (|+ note n) $ p
 transdown n p = (|- note n) $ p
+
+--safe filters
+safety p = (min 22000) <$> p
