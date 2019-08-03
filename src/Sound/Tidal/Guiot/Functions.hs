@@ -33,9 +33,11 @@ deg8 = degBy 0.8
 deg9 = degBy 0.9
 mute = degBy 1
 
---transup and transdown
+--transup and transdown (j for JI)
 transup n p = (|+ note n) $ p
 transdown n p = (|- note n) $ p
+jtransup n p = (|* note n) $ p
+jtransdown n p = (|* note (1/n)) $ p
 
 --safe filters
 safety p = (min 22000) <$> p
