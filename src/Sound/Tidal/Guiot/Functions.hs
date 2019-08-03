@@ -39,5 +39,8 @@ transdown n p = (|- note n) $ p
 jtransup n p = (|* note n) $ p
 jtransdown n p = (|* note (1/n)) $ p
 
+--ampl
+ampl n p = (|* gain n) $ p
+
 --safe filters
 safety p = (min 22000) <$> p
