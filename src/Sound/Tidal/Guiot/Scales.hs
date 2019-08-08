@@ -3,6 +3,7 @@ module Sound.Tidal.Guiot.Scales where
 import Sound.Tidal.Context
 import Sound.Tidal.Scales
 import Sound.Tidal.Chords
+import Sound.Tidal.Utils
 
 --toScale for JI scales
 
@@ -12,7 +13,7 @@ jtoScale' o s = fmap noteInScale
   where octave x = x `div` length s
         noteInScale x = (s !!! x) * fromIntegral (o ^ octave x)
 
-jtoScale = toScalej' 2
+jtoScale = jtoScale' 2
 
 --53EDO
 
