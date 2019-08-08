@@ -25,7 +25,9 @@ fmfreq = pF "fmfreq"
 fmamt = pF "fmamt"
 combdel = pF "combdel"
 combtime = pF "combtime"
-attperc = pF "attpercent"
+attpercent = pF "attpercent"
+panx = pF "panx"
+pany = pF "pany"
 
 -- for "\balloon" SynthDef
 notea, noteb, notec, noted, envab, envbc, envcd, bandpfa, bandpfb, bandpfc, bandpqa, bandpqb, bandpqc :: Pattern Double -> ControlPattern
