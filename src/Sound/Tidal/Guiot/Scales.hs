@@ -6,13 +6,13 @@ import Sound.Tidal.Chords
 
 --toScale for JI scales
 
-toScalej' :: Num a => Int -> [a] -> Pattern Int -> Pattern a
-toScalej' _ [] = const silence
-toScalej' o s = fmap noteInScale
+jtoScale' :: Num a => Int -> [a] -> Pattern Int -> Pattern a
+jtoScale' _ [] = const silence
+jtoScale' o s = fmap noteInScale
   where octave x = x `div` length s
         noteInScale x = (s !!! x) * fromIntegral (o ^ octave x)
 
-toScalej = toScalej' 2
+jtoScale = toScalej' 2
 
 --53EDO
 

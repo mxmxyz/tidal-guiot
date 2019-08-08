@@ -46,11 +46,3 @@ ampl n p = (|* gain n) $ p
 --safe filters
 safety p = (min 22000) <$> p
 
-toScalej' :: Num a => Int -> [a] -> Pattern Int -> Pattern a
-toScalej' _ [] = const silence
-toScalej' o s = fmap noteInScale
-  where octave x = x `div` length s
-        noteInScale x = (s !!! x) * fromIntegral (o ^ octave x)
-
-toScalej = toScalej' 2
-
