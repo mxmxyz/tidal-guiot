@@ -21,8 +21,7 @@ jtoScale scale = jtoScale' 2 scale
 --create a row
 
 jrowHalf :: (Fractional a, Ord a) => a -> Int -> [a]
-jrowHalf interval n = map jnorm (map (invpow) [0..n])
-    where invpow y = interval ^^ y
+jrowHalf interval n = map jnorm (map ((^^) interval) ([0..n]))
 
 jrow :: (Fractional a, Ord a) => a -> Int -> Int -> [a]
 jrow interval right left = sort ((tail (jrowHalf interval right)) ++ jrowHalf (1 / interval) left)
