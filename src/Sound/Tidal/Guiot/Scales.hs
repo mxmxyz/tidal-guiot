@@ -10,11 +10,11 @@ import Sound.Tidal.Guiot.Utils
 
 --toScale for JI scales
 
-jtoScale' :: Num a => Int -> [a] -> Pattern Int -> Pattern a
+jtoScale' :: (Num a) => a -> [a] -> Pattern Int -> Pattern a
 jtoScale' _ [] = const silence
 jtoScale' o s = fmap noteInScale
   where octave x = x `div` length s
-        noteInScale x = (s !!! x) * fromIntegral (o ^ octave x)
+        noteInScale x = (s !!! x) * (o ^ octave x)
 
 jtoScale scale = jtoScale' 2 scale
 
