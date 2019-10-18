@@ -35,6 +35,13 @@ jmat2 (3,2,2) (5,1,1) :: [Rational]
 jmat2 :: (Fractional a, Ord a) => (a, Int, Int) -> (a, Int, Int) -> [a]
 jmat2 (int1, r1, l1) (int2, r2, l2) = sort (removeDuplicates (map jnorm ([x * y | x <- (jrow int1 r1 l1), y <- (jrow int2 r2 l2)])))
 
+-- | moments of symmetry
+mos :: Int -> Int -> Int -> [Int]
+mos notes interval scale
+  | notes < 1 = []
+  | notes == 1 = [0]
+  | notes > 1 = (mos (notes - 1) interval scale) ++ [(mod ((+ interval) $ last $ mos (notes - 1) interval scale) scale)]
+
 ---premade scales
 
 --53EDO

@@ -46,3 +46,6 @@ ampl n p = (|* gain n) $ p
 --safe filters
 safety p = (min 22000) <$> p
 
+--paliWith
+paliWith :: a -> [a] -> [a]
+paliWith n l = l ++ [n] ++ reverse l
