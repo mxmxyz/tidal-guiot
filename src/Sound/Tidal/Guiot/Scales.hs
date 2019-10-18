@@ -37,10 +37,7 @@ jmat2 (int1, r1, l1) (int2, r2, l2) = sort (removeDuplicates (map jnorm ([x * y 
 
 -- | moments of symmetry
 mos :: Int -> Int -> Int -> [Int]
-mos notes interval scale
-  | notes < 1 = []
-  | notes == 1 = [0]
-  | notes > 1 = (mos (notes - 1) interval scale) ++ [(mod ((+ interval) $ last $ mos (notes - 1) interval scale) scale)]
+mos notes interval scale = take notes $ iterate ((`mod` scale) . (+ interval)) 0
 
 ---premade scales
 
