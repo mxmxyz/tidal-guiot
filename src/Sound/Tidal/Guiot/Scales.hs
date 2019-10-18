@@ -1,6 +1,7 @@
 module Sound.Tidal.Guiot.Scales where
 
 import Data.List
+import Data.Fixed
 
 import Sound.Tidal.Context
 import Sound.Tidal.Scales
@@ -36,8 +37,8 @@ jmat2 :: (Fractional a, Ord a) => (a, Int, Int) -> (a, Int, Int) -> [a]
 jmat2 (int1, r1, l1) (int2, r2, l2) = sort (removeDuplicates (map jnorm ([x * y | x <- (jrow int1 r1 l1), y <- (jrow int2 r2 l2)])))
 
 -- | moments of symmetry
-mos :: Int -> Int -> Int -> [Int]
-mos notes interval scale = take notes $ iterate ((`mod` scale) . (+ interval)) 0
+mos :: Real a => Int -> a -> a -> [a]
+mos notes interval scale = take notes $ iterate ((`mod'` scale) . (+ interval)) 0
 
 ---premade scales
 
