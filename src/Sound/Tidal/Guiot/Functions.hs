@@ -49,3 +49,9 @@ safety p = (min 22000) <$> p
 --paliWith
 paliWith :: a -> [a] -> [a]
 paliWith n l = l ++ [n] ++ reverse l
+
+indexElem :: Foldable t => Int -> t Int -> [Bool]
+indexElem steps list = map (`elem` list) $ enumFromTo 0 steps
+
+makeStruct :: Foldable t => Int -> t Int -> Pattern Bool
+makeStruct steps = fromList . indexElem steps

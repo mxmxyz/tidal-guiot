@@ -20,3 +20,11 @@ jnorm n
     | n < 1 = jnorm (n * 2)
     | n > 2 = jnorm (n / 2)
     | otherwise = n
+
+truthInt :: Bool -> Int
+truthInt x
+    | x == True = 1
+    | x == False = 0
+
+elemInt :: (Eq a, Foldable t) => a -> t a -> Int
+elemInt x y = truthInt $ elem x y
