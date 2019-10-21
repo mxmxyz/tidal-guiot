@@ -37,7 +37,7 @@ jmat2 :: (Fractional a, Ord a) => (a, Int, Int) -> (a, Int, Int) -> [a]
 jmat2 (int1, r1, l1) (int2, r2, l2) = sort (removeDuplicates (map jnorm ([x * y | x <- (jrow int1 r1 l1), y <- (jrow int2 r2 l2)])))
 
 -- | moments of symmetry
-mos :: Integral a => a -> a -> a -> [a]
+mos :: Int -> Int -> Int -> [Int]
 mos notes interval scale = take notes $ iterate ((`mod` scale) . (+ interval)) 0
 
 
