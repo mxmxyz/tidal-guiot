@@ -55,3 +55,6 @@ indexElem steps list = map (`elem` list) $ enumFromTo 0 steps
 
 makeStruct :: Foldable t => Int -> t Int -> Pattern Bool
 makeStruct steps = fromList . indexElem steps
+
+superLayer :: Pattern Double -> Pattern Int -> Pattern ControlMap -> Pattern ControlMap 
+superLayer d n = stutWith n 0 (|+ note d)
