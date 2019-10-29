@@ -5,8 +5,7 @@ import Sound.Tidal.Scales
 import Sound.Tidal.Chords
 import Sound.Tidal.Utils
 
---wrap, courtesy of @yaxu
-wrap s e p = (p |% (e - s)) |+ s
+import Sound.Tidal.Guiot.Utils
 
 --shrand, to allow for non-syncing randomness
 shrand n = (fast (1.453^n) $ rand)
@@ -50,11 +49,9 @@ safety p = (min 22000) <$> p
 paliWith :: a -> [a] -> [a]
 paliWith n l = l ++ [n] ++ reverse l
 
-indexElem :: Foldable t => Int -> t Int -> [Bool]
-indexElem steps list = map (`elem` list) $ enumFromTo 0 steps
-
 makeStruct :: Foldable t => Int -> t Int -> Pattern Bool
 makeStruct steps = fromList . indexElem steps
 
 superLayer :: Pattern Double -> Pattern Int -> Pattern ControlMap -> Pattern ControlMap 
 superLayer d n = stutWith n 0 (|+ note d)
+

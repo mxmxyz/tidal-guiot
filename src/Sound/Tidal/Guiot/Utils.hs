@@ -28,3 +28,6 @@ truthInt x
 
 elemInt :: (Eq a, Foldable t) => a -> t a -> Int
 elemInt x y = truthInt $ elem x y
+
+indexElem :: Foldable t => Int -> t Int -> [Bool]
+indexElem steps list = map (`elem` list) $ enumFromTo 0 steps
