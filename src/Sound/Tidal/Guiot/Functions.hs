@@ -7,6 +7,9 @@ import Sound.Tidal.Utils
 
 import Sound.Tidal.Guiot.Utils
 
+--wrap, courtesy of @yaxu
+wrap s e p = (p |% (e - s)) |+ s
+
 --shrand, to allow for non-syncing randomness
 shrand n = (fast (1.453^n) $ rand)
 
@@ -40,7 +43,7 @@ jtransup n p = (|* note n) $ p
 jtransdown n p = (|* note (1/n)) $ p
 
 --ampl
-ampl n p = (|* gain n) $ p
+ampl n = (|* gain n)
 
 --safe filters
 safety p = (min 22000) <$> p
@@ -54,4 +57,3 @@ makeStruct steps = fromList . indexElem steps
 
 superLayer :: Pattern Double -> Pattern Int -> Pattern ControlMap -> Pattern ControlMap 
 superLayer d n = stutWith n 0 (|+ note d)
-
