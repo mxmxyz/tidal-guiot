@@ -26,6 +26,11 @@ truthInt x
     | x == True = 1
     | x == False = 0
 
+intTruth :: Int -> Bool
+intTruth x
+    | x == 0 = False
+    | otherwise = True
+
 elemInt :: (Eq a, Foldable t) => a -> t a -> Int
 elemInt x y = truthInt $ elem x y
 

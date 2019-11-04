@@ -42,9 +42,6 @@ transdown n p = (|- note n) $ p
 jtransup n p = (|* note n) $ p
 jtransdown n p = (|* note (1/n)) $ p
 
---ampl
-ampl n = (|* gain n)
-
 --safe filters
 safety p = (min 22000) <$> p
 
@@ -56,4 +53,18 @@ makeStruct :: Foldable t => Int -> t Int -> Pattern Bool
 makeStruct steps = fromList . indexElem steps
 
 superLayer :: Pattern Double -> Pattern Int -> Pattern ControlMap -> Pattern ControlMap 
-superLayer d n = stutWith n 0 (|+ note d)
+superLayer d n = (|* amp (1 / (fmap fromIntegral $ n))) . (stutWith n 0 (|+ note d))
+
+thuemorse :: Int -> [Bool]
+thuemorse n = (iterate thue [True])!!n
+    where thue l = l ++ (map not l)
+
+thuemorsepat :: Int -> Pattern Bool
+thuemorsepat n = fromList $ thuemorse n
+
+tribonacci :: Int -> [Int]
+tribonacci n = (iterate (concat . map trib) [1])!!n
+    where trib n
+	    | n == 0 = [0,1]
+            | n == 1 = [0,2]
+	    | otherwise = [0]
