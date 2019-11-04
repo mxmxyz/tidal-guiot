@@ -63,7 +63,7 @@ thuemorsepat :: Int -> Pattern Bool
 thuemorsepat n = fromList $ thuemorse n
 
 tribonacci :: Int -> [Int]
-tribonacci n = (iterate (concat . map trib) [1])!!n
+tribonacci n = (iterate (trib =<<) [0])!!n
     where trib n
 	    | n == 0 = [0,1]
             | n == 1 = [0,2]
