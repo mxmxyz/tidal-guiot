@@ -17,10 +17,10 @@ shrand n = (fast (1.453^n) $ rand)
 shiftscale scale n p = scale ((+ n) <$> p)
 
 --rot aliases
-shiftl n p = (rotL n) $ p
-shiftr n p = (rotR n) $ p
-rotl n p = (rotL n) $ p
-rotr n p = (rotR n) $ p
+shiftl n p = (<~ n) $ p
+shiftr n p = (~> n) $ p
+rotl n p = (<~ n) $ p
+rotr n p = (~> n) $ p
 
 --degradeBy shorthands, courtesy @kindohm
 degBy = degradeBy
