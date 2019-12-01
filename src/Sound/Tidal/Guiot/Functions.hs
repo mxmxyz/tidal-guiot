@@ -56,11 +56,7 @@ superLayer :: Pattern Double -> Pattern Int -> Pattern ControlMap -> Pattern Con
 superLayer d n = (|* amp (1 / (fmap fromIntegral $ n))) . (stutWith n 0 (|+ note d))
 
 jsuperLayer :: Pattern Double -> Pattern Int -> Pattern ControlMap -> Pattern ControlMap 
-<<<<<<< HEAD
 jsuperLayer d n = (|* amp (1 / (fmap fromIntegral $ n))) . (stutWith n 0 (|* note d))
-=======
-superLayer d n = (|* amp (1 / (fmap fromIntegral $ n))) . (stutWith n 0 (|* note d))
->>>>>>> d3980f84403e4ee45bbdc25f70bbea90b3d4241a
 
 thuemorse :: Int -> [Bool]
 thuemorse n = (iterate thue [True])!!n
