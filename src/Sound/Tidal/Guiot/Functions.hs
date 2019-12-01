@@ -55,6 +55,9 @@ makeStruct steps = fromList . indexElem steps
 superLayer :: Pattern Double -> Pattern Int -> Pattern ControlMap -> Pattern ControlMap 
 superLayer d n = (|* amp (1 / (fmap fromIntegral $ n))) . (stutWith n 0 (|+ note d))
 
+jsuperLayer :: Pattern Double -> Pattern Int -> Pattern ControlMap -> Pattern ControlMap 
+jsuperLayer d n = (|* amp (1 / (fmap fromIntegral $ n))) . (stutWith n 0 (|* note d))
+
 thuemorse :: Int -> [Bool]
 thuemorse n = (iterate thue [True])!!n
     where thue l = l ++ (map not l)
