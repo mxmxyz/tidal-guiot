@@ -10,19 +10,17 @@ import Sound.Tidal.Guiot.Utils
 --wrap, courtesy of @yaxu
 wrap s e p = (p |% (e - s)) |+ s
 
---shrand, to allow for non-syncing randomness
-shrand n = (fast (1.453^n) $ rand)
 
---scaleshift, to use a scale and +/- by n degrees 
-shiftscale scale n p = scale ((+ n) <$> p)
-
---rot aliases
+-- | aliases for pattern rotation
 rotl n p = (n <~) $ p
 rotr n p = (n ~>) $ p
 shiftl = rotl
 shiftr = rotr
 
---degradeBy shorthands, courtesy @kindohm
+-- | shifted rand
+shrand n = (shiftl (32.1 * n) $ rand)
+
+-- | shorthands for degradeBy
 degBy = degradeBy
 deg0 = degBy 0.0
 deg1 = degBy 0.1
@@ -36,38 +34,47 @@ deg8 = degBy 0.8
 deg9 = degBy 0.9
 mute = degBy 1
 
---transup and transdown (j for JI)
+-- | transposing a pattern up and down
 transup n p = (|+ note n) $ p
 transdown n p = (|- note n) $ p
 jtransup n p = (|* note n) $ p
 jtransdown n p = (|* note (1/n)) $ p
 
---safe filters
+-- | limiter to prevent filters from going over Nyquist
 safety p = (min 22000) <$> p
 
---paliWith
+-- | palindrome of a list, with an added element in the middle
 paliWith :: a -> [a] -> [a]
 paliWith n l = l ++ [n] ++ reverse l
 
+-- | takes a list of integers and creates a boolean pattern with 1s at the steps whose number is contained in the list
 makeStruct :: Foldable t => Int -> t Int -> Pattern Bool
 makeStruct steps = fromList . indexElem steps
 
+-- | creates copies transposed to a different pitch
 superLayer :: Pattern Double -> Pattern Int -> Pattern ControlMap -> Pattern ControlMap 
 superLayer d n = (|* amp (1 / (fmap fromIntegral $ n))) . (stutWith n 0 (|+ note d))
 
 jsuperLayer :: Pattern Double -> Pattern Int -> Pattern ControlMap -> Pattern ControlMap 
 jsuperLayer d n = (|* amp (1 / (fmap fromIntegral $ n))) . (stutWith n 0 (|* note d))
 
+-- | the thue-morse word up to n iterations
 thuemorse :: Int -> [Bool]
 thuemorse n = (iterate thue [True])!!n
     where thue l = l ++ (map not l)
 
+-- | the thue-morse pattern up to n iterations
 thuemorsepat :: Int -> Pattern Bool
 thuemorsepat n = fromList $ thuemorse n
 
+-- | the tribonacci word up to n iterations
 tribonacci :: Int -> [Int]
 tribonacci n = (iterate (trib =<<) [0])!!n
     where trib n
 	    | n == 0 = [0,1]
             | n == 1 = [0,2]
 	    | otherwise = [0]
+
+-- | the tribonacci pattern up to n iterations
+tribonaccipat :: Int -> Pattern Int
+tribonaccipat n = fromList $ tribonacci n
