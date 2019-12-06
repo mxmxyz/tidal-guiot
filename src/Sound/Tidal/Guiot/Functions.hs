@@ -52,11 +52,11 @@ makeStruct :: Foldable t => Int -> t Int -> Pattern Bool
 makeStruct steps = fromList . indexElem steps
 
 -- | creates copies transposed to a different pitch
-superLayer :: Pattern Double -> Pattern Int -> Pattern ControlMap -> Pattern ControlMap 
-superLayer d n = (|* amp (1 / (fmap fromIntegral $ n))) . (stutWith n 0 (|+ note d))
+superLayer :: Pattern Int -> Pattern Double -> Pattern ControlMap -> Pattern ControlMap 
+superLayer n d = (|* amp (1 / (fmap fromIntegral $ n))) . (stutWith n 0 (|+ note d))
 
-jsuperLayer :: Pattern Double -> Pattern Int -> Pattern ControlMap -> Pattern ControlMap 
-jsuperLayer d n = (|* amp (1 / (fmap fromIntegral $ n))) . (stutWith n 0 (|* note d))
+jsuperLayer :: Pattern Int -> Pattern Double -> Pattern ControlMap -> Pattern ControlMap 
+jsuperLayer n d = (|* amp (1 / (fmap fromIntegral $ n))) . (stutWith n 0 (|* note d))
 
 -- | the thue-morse word up to n iterations
 thuemorse :: Int -> [Bool]
