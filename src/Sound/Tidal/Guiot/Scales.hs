@@ -57,3 +57,9 @@ superchromatic53 = toScale' 53 [0, 3, 5, 9, 12, 14, 17, 19, 20, 22, 26, 27, 31, 
 chromatic5l :: (Num a, Fractional a) => Pattern Int -> Pattern a
 chromatic5l = jtoScale [1, (16/15), (9/8), (6/5), (5/4), (4/3), (25/18), (3/2), (8/5), (5/3), (9/5), (15/8)]
 
+-- commas
+
+commaPythagorean = 531441 / 524288
+commaSyntonic = 81/80
+commaSeptimal = 64/63
+commaBiyatisma = 121/120

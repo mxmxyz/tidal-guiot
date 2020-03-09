@@ -28,6 +28,9 @@ combtime = pF "combtime"
 attpercent = pF "attpercent"
 panx = pF "panx"
 pany = pF "pany"
+noise = pF "noise"
+lopfstart = pF "lopfstart"
+lopfend = pF "lopfend"
 
 -- for "\balloon" SynthDef
 notea, noteb, notec, noted, envab, envbc, envcd, bandpfa, bandpfb, bandpfc, bandpqa, bandpqb, bandpqc :: Pattern Double -> ControlPattern
