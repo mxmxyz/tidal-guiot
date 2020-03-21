@@ -34,6 +34,13 @@ deg8 = degBy 0.8
 deg9 = degBy 0.9
 mute = degBy 1
 
+-- | shorthand for sometimesBy
+sBy = sometimesBy
+sby = sometimesBy
+
+-- | panr
+panr n = pan (shrand n)
+
 -- | transposing a pattern up and down
 transup n p = (|+ note n) $ p
 transdown n p = (|- note n) $ p
