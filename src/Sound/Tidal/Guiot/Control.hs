@@ -31,6 +31,7 @@ pany = pF "pany"
 noise = pF "noise"
 lopfstart = pF "lopfstart"
 lopfend = pF "lopfend"
+tanhdist = pF "tanh"
 
 -- for "\balloon" SynthDef
 notea, noteb, notec, noted, envab, envbc, envcd, bandpfa, bandpfb, bandpfc, bandpqa, bandpqb, bandpqc :: Pattern Double -> ControlPattern
