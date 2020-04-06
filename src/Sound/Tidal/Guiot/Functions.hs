@@ -85,3 +85,11 @@ tribonacci n = (iterate (trib =<<) [0])!!n
 -- | the tribonacci pattern up to n iterations
 tribonaccipat :: Int -> Pattern Int
 tribonaccipat n = fromList $ tribonacci n
+
+-- kindohm's mapp function
+-- maps a binary pattern to values inside of the list
+-- e.g:
+-- note (mapp [50,57,62] "0*2 1*3 2*4")
+
+mapp :: [Pattern a] -> Pattern Int -> Pattern a
+mapp mapping p = unwrap $ fmap (mapping!!) $ p
