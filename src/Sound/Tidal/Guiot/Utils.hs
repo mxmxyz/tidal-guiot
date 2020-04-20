@@ -36,3 +36,9 @@ elemInt x y = truthInt $ elem x y
 
 indexElem :: Foldable t => Int -> t Int -> [Bool]
 indexElem steps list = map (`elem` list) $ enumFromTo 0 steps
+
+nTimes :: (Num n, Ord n) => n -> (a -> a) -> a -> a
+nTimes 1 f x = f x
+nTimes n f x = f (nTimes (n-1) f x)
+
+applyN = nTimes
